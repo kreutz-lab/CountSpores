@@ -1,0 +1,22 @@
+Package: CountSpores
+Type: Package
+Title: Customized analysis pipeline to estimate spore growth.
+Version: 0.1.0
+Author: Eva Kohnert
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Estimate spore growth over time in multiple conditions. 
+ Applies linear mixed effects model to take technical replicates (segments on dishes) and biological replicates (dishes) into account.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Depends: 
+  openxlsx,
+  lmerTest,
+  ggplot2,
+  dplyr,
+  tidyr
+RoxygenNote: 7.1.0
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

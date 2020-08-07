@@ -1,0 +1,365 @@
+*** Results for GA3  ***
+
+
+
+------------------------------------ 
+ *** Take 9650_KO as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1934.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.8016 -0.4276 -0.0335  0.4719  2.9861 
+
+Random effects:
+ Groups           Name        Variance Std.Dev.
+ Plate:is11750_KO (Intercept) 435.07   20.858  
+ Plate:is14620_KO (Intercept) 217.95   14.763  
+ Plate:isRe_15    (Intercept) 180.30   13.428  
+ Plate:is9_14_DKO (Intercept) 138.97   11.788  
+ Residual                      90.53    9.515  
+Number of obs: 279, groups:  
+Plate:is11750_KO, 6; Plate:is14620_KO, 6; Plate:isRe_15, 6; Plate:is9_14_DKO, 6
+
+Fixed effects:
+                   Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)       3.784e-11  1.828e+01  8.361e+00   0.000   1.0000    
+Day2              1.098e+01  4.485e+00  2.372e+02   2.447   0.0151 *  
+Day3              2.783e+01  4.485e+00  2.372e+02   6.205 2.42e-09 ***
+Day4              6.204e+01  4.485e+00  2.372e+02  13.832  < 2e-16 ***
+Day5              7.812e+01  4.485e+00  2.372e+02  17.417  < 2e-16 ***
+Day6              8.934e+01  4.485e+00  2.372e+02  19.920  < 2e-16 ***
+Day7              9.574e+01  4.485e+00  2.372e+02  21.345  < 2e-16 ***
+Day2:is11750_KO1 -2.896e+00  1.761e+01  2.727e+00  -0.164   0.8808    
+Day3:is11750_KO1 -1.059e+01  1.761e+01  2.727e+00  -0.601   0.5940    
+Day4:is11750_KO1 -2.852e+01  1.761e+01  2.727e+00  -1.619   0.2128    
+Day5:is11750_KO1 -2.510e+01  1.761e+01  2.727e+00  -1.425   0.2579    
+Day6:is11750_KO1 -2.165e+01  1.761e+01  2.727e+00  -1.229   0.3144    
+Day7:is11750_KO1 -2.019e+01  1.761e+01  2.727e+00  -1.147   0.3421    
+Day2:is14620_KO1  1.185e+01  1.286e+01  2.649e+00   0.921   0.4329    
+Day3:is14620_KO1  4.862e+01  1.286e+01  2.649e+00   3.780   0.0401 *  
+Day4:is14620_KO1  1.805e+01  1.286e+01  2.649e+00   1.403   0.2663    
+Day5:is14620_KO1  7.910e+00  1.286e+01  2.649e+00   0.615   0.5873    
+Day6:is14620_KO1  6.829e-01  1.286e+01  2.649e+00   0.053   0.9614    
+Day7:is14620_KO1 -2.212e-01  1.286e+01  2.649e+00  -0.017   0.9875    
+Day2:isRe_151     6.205e+00  1.185e+01  2.722e+00   0.524   0.6400    
+Day3:isRe_151     2.089e+01  1.185e+01  2.722e+00   1.763   0.1853    
+Day4:isRe_151     7.726e+00  1.185e+01  2.722e+00   0.652   0.5651    
+Day5:isRe_151     5.836e+00  1.185e+01  2.722e+00   0.493   0.6592    
+Day6:isRe_151     1.847e+00  1.185e+01  2.722e+00   0.156   0.8869    
+Day7:isRe_151    -1.377e+00  1.185e+01  2.722e+00  -0.116   0.9155    
+Day2:is9_14_DKO1  1.662e+01  1.062e+01  2.867e+00   1.565   0.2197    
+Day3:is9_14_DKO1  4.742e+01  1.062e+01  2.867e+00   4.466   0.0230 *  
+Day4:is9_14_DKO1  2.608e+01  1.062e+01  2.867e+00   2.456   0.0951 .  
+Day5:is9_14_DKO1  1.327e+01  1.062e+01  2.867e+00   1.250   0.3036    
+Day6:is9_14_DKO1  4.999e+00  1.062e+01  2.867e+00   0.471   0.6713    
+Day7:is9_14_DKO1  1.323e+00  1.062e+01  2.867e+00   0.125   0.9091    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+Type III Analysis of Variance Table with Satterthwaite's method
+               Sum Sq Mean Sq NumDF   DenDF  F value  Pr(>F)    
+Day             81559 13593.1     6 237.203 150.1501 < 2e-16 ***
+Day:is11750_KO   2181   363.5     6   4.617   4.0157 0.08280 .  
+Day:is14620_KO   7483  1247.2     6   2.833  13.7766 0.03182 *  
+Day:isRe_15      1348   224.7     6   2.662   2.4826 0.26354    
+Day:is9_14_DKO   6624  1103.9     6   2.467  12.1940 0.05106 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+------------------------------------ 
+ *** Take 11750_KO as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1938.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.3394 -0.4721 -0.0376  0.4994  2.8414 
+
+Random effects:
+ Groups           Name        Variance Std.Dev.
+ Plate:is9650_KO  (Intercept) 458.09   21.403  
+ Plate:is14620_KO (Intercept) 113.21   10.640  
+ Plate:isRe_15    (Intercept) 358.16   18.925  
+ Plate:is9_14_DKO (Intercept) 237.64   15.416  
+ Residual                      91.48    9.565  
+Number of obs: 279, groups:  
+Plate:is9650_KO, 6; Plate:is14620_KO, 6; Plate:isRe_15, 6; Plate:is9_14_DKO, 6
+
+Fixed effects:
+                  Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)      3.001e-11  1.998e+01 8.398e+00   0.000 1.000000    
+Day2             8.080e+00  4.509e+00 2.372e+02   1.792 0.074406 .  
+Day3             1.724e+01  4.509e+00 2.372e+02   3.824 0.000168 ***
+Day4             3.352e+01  4.509e+00 2.372e+02   7.435 1.89e-12 ***
+Day5             5.302e+01  4.509e+00 2.372e+02  11.759  < 2e-16 ***
+Day6             6.769e+01  4.509e+00 2.372e+02  15.014  < 2e-16 ***
+Day7             7.555e+01  4.509e+00 2.372e+02  16.755  < 2e-16 ***
+Day2:is9650_KO1  2.896e+00  1.805e+01 2.419e+00   0.160 0.884945    
+Day3:is9650_KO1  1.059e+01  1.805e+01 2.419e+00   0.587 0.607614    
+Day4:is9650_KO1  2.852e+01  1.805e+01 2.419e+00   1.580 0.233216    
+Day5:is9650_KO1  2.510e+01  1.805e+01 2.419e+00   1.391 0.278419    
+Day6:is9650_KO1  2.165e+01  1.805e+01 2.419e+00   1.200 0.334498    
+Day7:is9650_KO1  2.019e+01  1.805e+01 2.419e+00   1.119 0.361868    
+Day2:is14620_KO1 1.474e+01  9.788e+00 2.942e+00   1.506 0.230787    
+Day3:is14620_KO1 5.920e+01  9.788e+00 2.942e+00   6.049 0.009587 ** 
+Day4:is14620_KO1 4.657e+01  9.788e+00 2.942e+00   4.758 0.018426 *  
+Day5:is14620_KO1 3.301e+01  9.788e+00 2.942e+00   3.373 0.044618 *  
+Day6:is14620_KO1 2.233e+01  9.788e+00 2.942e+00   2.282 0.108497    
+Day7:is14620_KO1 1.997e+01  9.788e+00 2.942e+00   2.041 0.135768    
+Day2:isRe_151    9.101e+00  1.610e+01 2.376e+00   0.565 0.620709    
+Day3:isRe_151    3.148e+01  1.610e+01 2.376e+00   1.955 0.169175    
+Day4:isRe_151    3.624e+01  1.610e+01 2.376e+00   2.252 0.132860    
+Day5:isRe_151    3.094e+01  1.610e+01 2.376e+00   1.922 0.174053    
+Day6:isRe_151    2.350e+01  1.610e+01 2.376e+00   1.460 0.262710    
+Day7:isRe_151    1.882e+01  1.610e+01 2.376e+00   1.169 0.346264    
+Day2:is9_14_DKO1 1.951e+01  1.337e+01 2.452e+00   1.459 0.259572    
+Day3:is9_14_DKO1 5.801e+01  1.337e+01 2.452e+00   4.339 0.033727 *  
+Day4:is9_14_DKO1 5.460e+01  1.337e+01 2.452e+00   4.084 0.038580 *  
+Day5:is9_14_DKO1 3.837e+01  1.337e+01 2.452e+00   2.870 0.081327 .  
+Day6:is9_14_DKO1 2.665e+01  1.337e+01 2.452e+00   1.993 0.160402    
+Day7:is9_14_DKO1 2.152e+01  1.337e+01 2.452e+00   1.609 0.225627    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+Type III Analysis of Variance Table with Satterthwaite's method
+               Sum Sq Mean Sq NumDF   DenDF F value  Pr(>F)    
+Day             47611  7935.2     6 237.241 86.7421 < 2e-16 ***
+Day:is9650_KO    2177   362.9     6   3.042  3.9666 0.14056    
+Day:is14620_KO   7925  1320.9     6   2.000 14.4388 0.06618 .  
+Day:isRe_15      2472   412.0     6   2.449  4.5042 0.15533    
+Day:is9_14_DKO   7068  1177.9     6   2.054 12.8762 0.07009 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+------------------------------------ 
+ *** Take 14620_KO as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1900.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.5551 -0.4760 -0.0071  0.4528  2.9943 
+
+Random effects:
+ Groups           Name        Variance Std.Dev.
+ Plate:is9650_KO  (Intercept) 231.70   15.222  
+ Plate:is11750_KO (Intercept) 174.08   13.194  
+ Plate:isRe_15    (Intercept)  53.34    7.303  
+ Plate:is9_14_DKO (Intercept)  18.55    4.307  
+ Residual                      81.34    9.019  
+Number of obs: 279, groups:  
+Plate:is9650_KO, 6; Plate:is11750_KO, 6; Plate:isRe_15, 6; Plate:is9_14_DKO, 6
+
+Fixed effects:
+                   Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)       7.747e-12  1.297e+01  7.764e+00   0.000   1.0000    
+Day2              2.282e+01  4.252e+00  2.375e+02   5.368 1.89e-07 ***
+Day3              7.644e+01  4.252e+00  2.375e+02  17.980  < 2e-16 ***
+Day4              8.009e+01  4.252e+00  2.375e+02  18.838  < 2e-16 ***
+Day5              8.603e+01  4.252e+00  2.375e+02  20.235  < 2e-16 ***
+Day6              9.003e+01  4.252e+00  2.375e+02  21.175  < 2e-16 ***
+Day7              9.552e+01  4.252e+00  2.375e+02  22.467  < 2e-16 ***
+Day2:is9650_KO1  -1.185e+01  1.314e+01  3.418e+00  -0.902   0.4260    
+Day3:is9650_KO1  -4.862e+01  1.314e+01  3.418e+00  -3.701   0.0274 *  
+Day4:is9650_KO1  -1.805e+01  1.314e+01  3.418e+00  -1.374   0.2526    
+Day5:is9650_KO1  -7.910e+00  1.314e+01  3.418e+00  -0.602   0.5847    
+Day6:is9650_KO1  -6.829e-01  1.314e+01  3.418e+00  -0.052   0.9614    
+Day7:is9650_KO1   2.212e-01  1.314e+01  3.418e+00   0.017   0.9875    
+Day2:is11750_KO1 -1.474e+01  1.158e+01  3.366e+00  -1.273   0.2838    
+Day3:is11750_KO1 -5.920e+01  1.158e+01  3.366e+00  -5.112   0.0109 *  
+Day4:is11750_KO1 -4.657e+01  1.158e+01  3.366e+00  -4.021   0.0222 *  
+Day5:is11750_KO1 -3.301e+01  1.158e+01  3.366e+00  -2.850   0.0568 .  
+Day6:is11750_KO1 -2.233e+01  1.158e+01  3.366e+00  -1.928   0.1393    
+Day7:is11750_KO1 -1.997e+01  1.158e+01  3.366e+00  -1.725   0.1730    
+Day2:isRe_151    -5.644e+00  7.324e+00  4.294e+00  -0.771   0.4811    
+Day3:isRe_151    -2.773e+01  7.324e+00  4.294e+00  -3.786   0.0170 *  
+Day4:isRe_151    -1.032e+01  7.324e+00  4.294e+00  -1.409   0.2269    
+Day5:isRe_151    -2.074e+00  7.324e+00  4.294e+00  -0.283   0.7902    
+Day6:isRe_151     1.164e+00  7.324e+00  4.294e+00   0.159   0.8809    
+Day7:isRe_151    -1.156e+00  7.324e+00  4.294e+00  -0.158   0.8817    
+Day2:is9_14_DKO1  4.767e+00  5.518e+00  8.318e+00   0.864   0.4118    
+Day3:is9_14_DKO1 -1.194e+00  5.518e+00  8.318e+00  -0.216   0.8339    
+Day4:is9_14_DKO1  8.032e+00  5.518e+00  8.318e+00   1.456   0.1822    
+Day5:is9_14_DKO1  5.363e+00  5.518e+00  8.318e+00   0.972   0.3585    
+Day6:is9_14_DKO1  4.316e+00  5.518e+00  8.318e+00   0.782   0.4558    
+Day7:is9_14_DKO1  1.544e+00  5.518e+00  8.318e+00   0.280   0.7864    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+Type III Analysis of Variance Table with Satterthwaite's method
+               Sum Sq Mean Sq NumDF   DenDF  F value    Pr(>F)    
+Day             75241 12540.2     6 237.522 154.1674 < 2.2e-16 ***
+Day:is9650_KO    7464  1244.0     6   6.993  15.2931  0.001053 ** 
+Day:is11750_KO   7417  1236.2     6   5.867  15.1977  0.002357 ** 
+Day:isRe_15      2666   444.3     6   3.331   5.4627  0.081984 .  
+Day:is9_14_DKO    309    51.4     6   2.827   0.6325  0.711697    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+------------------------------------ 
+ *** Take Re_15 as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1902.3
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.5103 -0.4900  0.0198  0.4288  2.9455 
+
+Random effects:
+ Groups           Name        Variance Std.Dev.
+ Plate:is9650_KO  (Intercept) 215.87   14.692  
+ Plate:is11750_KO (Intercept) 341.43   18.478  
+ Plate:is14620_KO (Intercept)  38.36    6.193  
+ Plate:is9_14_DKO (Intercept)   0.00    0.000  
+ Residual                      82.89    9.104  
+Number of obs: 279, groups:  
+Plate:is9650_KO, 6; Plate:is11750_KO, 6; Plate:is14620_KO, 6; Plate:is9_14_DKO, 6
+
+Fixed effects:
+                   Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)       1.247e-11  1.441e+01  6.666e+00   0.000  1.00000    
+Day2              1.718e+01  4.292e+00  2.398e+02   4.003 8.34e-05 ***
+Day3              4.872e+01  4.292e+00  2.398e+02  11.351  < 2e-16 ***
+Day4              6.977e+01  4.292e+00  2.398e+02  16.256  < 2e-16 ***
+Day5              8.396e+01  4.292e+00  2.398e+02  19.562  < 2e-16 ***
+Day6              9.119e+01  4.292e+00  2.398e+02  21.248  < 2e-16 ***
+Day7              9.436e+01  4.292e+00  2.398e+02  21.987  < 2e-16 ***
+Day2:is9650_KO1  -6.205e+00  1.274e+01  2.913e+00  -0.487  0.66055    
+Day3:is9650_KO1  -2.089e+01  1.274e+01  2.913e+00  -1.640  0.20233    
+Day4:is9650_KO1  -7.726e+00  1.274e+01  2.913e+00  -0.606  0.58821    
+Day5:is9650_KO1  -5.836e+00  1.274e+01  2.913e+00  -0.458  0.67889    
+Day6:is9650_KO1  -1.847e+00  1.274e+01  2.913e+00  -0.145  0.89417    
+Day7:is9650_KO1   1.377e+00  1.274e+01  2.913e+00   0.108  0.92095    
+Day2:is11750_KO1 -9.101e+00  1.569e+01  3.144e+00  -0.580  0.60077    
+Day3:is11750_KO1 -3.148e+01  1.569e+01  3.144e+00  -2.007  0.13423    
+Day4:is11750_KO1 -3.624e+01  1.569e+01  3.144e+00  -2.311  0.09995 .  
+Day5:is11750_KO1 -3.094e+01  1.569e+01  3.144e+00  -1.972  0.13893    
+Day6:is11750_KO1 -2.350e+01  1.569e+01  3.144e+00  -1.498  0.22699    
+Day7:is11750_KO1 -1.882e+01  1.569e+01  3.144e+00  -1.200  0.31281    
+Day2:is14620_KO1  5.644e+00  6.633e+00  5.099e+00   0.851  0.43293    
+Day3:is14620_KO1  2.773e+01  6.633e+00  5.099e+00   4.180  0.00829 ** 
+Day4:is14620_KO1  1.032e+01  6.633e+00  5.099e+00   1.556  0.17927    
+Day5:is14620_KO1  2.074e+00  6.633e+00  5.099e+00   0.313  0.76689    
+Day6:is14620_KO1 -1.164e+00  6.633e+00  5.099e+00  -0.176  0.86741    
+Day7:is14620_KO1  1.156e+00  6.633e+00  5.099e+00   0.174  0.86837    
+Day2:is9_14_DKO1  1.041e+01  4.292e+00  2.398e+02   2.426  0.01601 *  
+Day3:is9_14_DKO1  2.653e+01  4.292e+00  2.398e+02   6.182 2.70e-09 ***
+Day4:is9_14_DKO1  1.835e+01  4.292e+00  2.398e+02   4.276 2.75e-05 ***
+Day5:is9_14_DKO1  7.437e+00  4.292e+00  2.398e+02   1.733  0.08440 .  
+Day6:is9_14_DKO1  3.151e+00  4.292e+00  2.398e+02   0.734  0.46348    
+Day7:is9_14_DKO1  2.700e+00  4.292e+00  2.398e+02   0.629  0.52987    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+convergence code: 0
+boundary (singular) fit: see ?isSingular
+
+Type III Analysis of Variance Table with Satterthwaite's method
+               Sum Sq Mean Sq NumDF   DenDF  F value    Pr(>F)    
+Day             75172 12528.7     6 239.753 151.1509 < 2.2e-16 ***
+Day:is9650_KO    1341   223.4     6   4.313   2.6955   0.16755    
+Day:is11750_KO   2461   410.1     6   6.510   4.9479   0.03128 *  
+Day:is14620_KO   2712   451.9     6   2.999   5.4525   0.09615 .  
+Day:is9_14_DKO   5498   916.3     6 239.753  11.0547 7.068e-11 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+------------------------------------ 
+ *** Take 9_14_DKO as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1897.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.5564 -0.4523 -0.0006  0.4603  2.9858 
+
+Random effects:
+ Groups           Name        Variance Std.Dev.
+ Plate:is9650_KO  (Intercept) 189.37   13.761  
+ Plate:is11750_KO (Intercept) 262.80   16.211  
+ Plate:is14620_KO (Intercept)  24.05    4.904  
+ Plate:isRe_15    (Intercept)  15.73    3.966  
+ Residual                      80.96    8.998  
+Number of obs: 279, groups:  
+Plate:is9650_KO, 6; Plate:is11750_KO, 6; Plate:is14620_KO, 6; Plate:isRe_15, 6
+
+Fixed effects:
+                   Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)       1.158e-11  1.315e+01  6.984e+00   0.000 1.000000    
+Day2              2.759e+01  4.242e+00  2.386e+02   6.505 4.52e-10 ***
+Day3              7.525e+01  4.242e+00  2.386e+02  17.741  < 2e-16 ***
+Day4              8.812e+01  4.242e+00  2.386e+02  20.776  < 2e-16 ***
+Day5              9.139e+01  4.242e+00  2.386e+02  21.547  < 2e-16 ***
+Day6              9.434e+01  4.242e+00  2.386e+02  22.243  < 2e-16 ***
+Day7              9.706e+01  4.242e+00  2.386e+02  22.884  < 2e-16 ***
+Day2:is9650_KO1  -1.662e+01  1.201e+01  3.254e+00  -1.384 0.253796    
+Day3:is9650_KO1  -4.742e+01  1.201e+01  3.254e+00  -3.949 0.024929 *  
+Day4:is9650_KO1  -2.608e+01  1.201e+01  3.254e+00  -2.171 0.111251    
+Day5:is9650_KO1  -1.327e+01  1.201e+01  3.254e+00  -1.105 0.344012    
+Day6:is9650_KO1  -4.999e+00  1.201e+01  3.254e+00  -0.416 0.703199    
+Day7:is9650_KO1  -1.323e+00  1.201e+01  3.254e+00  -0.110 0.918728    
+Day2:is11750_KO1 -1.951e+01  1.390e+01  3.361e+00  -1.404 0.245686    
+Day3:is11750_KO1 -5.801e+01  1.390e+01  3.361e+00  -4.174 0.019986 *  
+Day4:is11750_KO1 -5.460e+01  1.390e+01  3.361e+00  -3.928 0.023814 *  
+Day5:is11750_KO1 -3.837e+01  1.390e+01  3.361e+00  -2.761 0.061701 .  
+Day6:is11750_KO1 -2.665e+01  1.390e+01  3.361e+00  -1.917 0.141066    
+Day7:is11750_KO1 -2.152e+01  1.390e+01  3.361e+00  -1.548 0.209664    
+Day2:is14620_KO1 -4.767e+00  5.833e+00  6.774e+00  -0.817 0.441551    
+Day3:is14620_KO1  1.194e+00  5.833e+00  6.774e+00   0.205 0.843801    
+Day4:is14620_KO1 -8.032e+00  5.833e+00  6.774e+00  -1.377 0.212326    
+Day5:is14620_KO1 -5.363e+00  5.833e+00  6.774e+00  -0.919 0.389441    
+Day6:is14620_KO1 -4.316e+00  5.833e+00  6.774e+00  -0.740 0.484227    
+Day7:is14620_KO1 -1.544e+00  5.833e+00  6.774e+00  -0.265 0.799084    
+Day2:isRe_151    -1.041e+01  5.336e+00  9.392e+00  -1.951 0.081483 .  
+Day3:isRe_151    -2.653e+01  5.336e+00  9.392e+00  -4.972 0.000676 ***
+Day4:isRe_151    -1.835e+01  5.336e+00  9.392e+00  -3.439 0.006948 ** 
+Day5:isRe_151    -7.437e+00  5.336e+00  9.392e+00  -1.394 0.195506    
+Day6:isRe_151    -3.151e+00  5.336e+00  9.392e+00  -0.591 0.568744    
+Day7:isRe_151    -2.700e+00  5.336e+00  9.392e+00  -0.506 0.624537    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+Type III Analysis of Variance Table with Satterthwaite's method
+               Sum Sq Mean Sq NumDF   DenDF  F value    Pr(>F)    
+Day             79195 13199.1     6 238.552 163.0366 < 2.2e-16 ***
+Day:is9650_KO    6518  1086.3     6   5.633  13.4178  0.003841 ** 
+Day:is11750_KO   6920  1153.4     6   7.069  14.2463  0.001252 ** 
+Day:is14620_KO    294    48.9     6   2.797   0.6046  0.726483    
+Day:isRe_15      2754   459.1     6   2.837   5.6704  0.099214 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
