@@ -24,7 +24,7 @@ summary_results.xlsx sheet: LME-Model_by_time Summary on Estimate, SE and pvalue
 
 summary_results.xlsx sheet: ANOVA_summary Summarized ANOVA results based on 'Condition'
 
-CountSpores_res List of lists of length corresponding to number of experiments. Each list entry consists of lmem and anova
+returns list of lists: aggregating for each experiment the result objects per reference level for lme-model & ANOVA
 }
 \description{
 fits lme-model to data, loops over all possible reference levels and runs ANOVA

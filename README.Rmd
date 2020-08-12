@@ -33,16 +33,19 @@ devtools::install_github("kreutz-lab/CountSpores")
 
 ## Example
 
-This is an example on how to use *CountSpores*, introducing CountSpores's functions and giving an overview on the output.   
+This is an example on how to use *CountSpores*, introducing CountSpores's functions and giving an overview on the output.    
+To reproduce this example analysis, download the example.xlsx file:   
+https://github.com/kreutz-lab/CountSpores/blob/master/exampleData/example.xlsx
 
 ```{r}
 library(CountSpores)
+
 ```
 
 ## Data Input
 
 The following line needs to be provided by the user    
-**file: Path to the raw data file**   
+**file: Path to the raw data file**    
 
 ```{r}
 file = "exampleData/example.xlsx"
