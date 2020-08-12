@@ -4,12 +4,10 @@
 \alias{plotMeanSE}
 \title{plot mean standard error relationship for each experiment}
 \usage{
-plotMeanSE(file, sheetnames)
+plotMeanSE(file = "Data_analysis/data_proportional.xlsx")
 }
 \arguments{
-\item{file}{path to raw data file}
-
-\item{sheetsnames}{character vector with sheetnames of raw data file}
+\item{file}{path to data proportional}
 }
 \value{
 saves png file for each experiment

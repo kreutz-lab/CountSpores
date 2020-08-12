@@ -4,7 +4,7 @@
 \alias{ReadData}
 \title{reads in raw data and convert to useable format for analysis}
 \usage{
-ReadData(file, sheets)
+ReadData(file)
 }
 \arguments{
 \item{file}{path to raw data file}
@@ -12,6 +12,8 @@ ReadData(file, sheets)
 \item{sheets}{character vector with sheetnames of raw data file}
 }
 \value{
+One folder for each experiment where results are stored
+
 Data_analysis  folder to store converted data files in excel format
 
 data_proportional.xlsx columns with proportions, mean, sd, se, plotID added to raw data

@@ -26,14 +26,14 @@ CountSpores is a customized analysis pipeline to estimate spore growth over time
 
 Install from [GitHub](https://github.com/) with:
 
-``` {r}
+``` {r, eval=FALSE}
 # install.packages("devtools")
 devtools::install_github("kreutz-lab/CountSpores")
 ```
 
 ## Example
 
-This is an example on how to use CountSpores, introducing CountSpores's functions and giving an overview on the output.
+This is an example on how to use *CountSpores*, introducing CountSpores's functions and giving an overview on the output.   
 
 ```{r}
 library(CountSpores)
@@ -41,61 +41,59 @@ library(CountSpores)
 
 ## Data Input
 
-#### The following two lines need to be provided by the user
-#### file: Path to the raw data file
-#### sheets: Each sheet within the raw data file needs to correspond to one experiment
-
-
-```{r setup}
-library(CountSpores)
-```
+The following line needs to be provided by the user    
+**file: Path to the raw data file**   
 
 ```{r}
-file = "exampleData/hormoneassay_rensing_2019.xlsx"
-sheets = c('LD', 'ABA', 'GA3')
+file = "exampleData/example.xlsx"
+
 ```
+
 ### Structur of raw data:
-#### Colnames of raw data need to be the same as in this example
+First 3 columns need to correspond to: **'Condition', 'Plate','Day'**    
+Counts per segment should be followed by totals per segment and in **same order**    
 
 ```{r}
-head(read.xlsx(file, sheet='LD'),15)
+knitr::kable(head(read.xlsx(file, sheet='LD'),15))
 ```
 
-## CreateOutputFolders
-
-#### Now we create for each experiment (sheet in excel file) a separate folder where results are stored
-```{r}
-CreateOutputFolders(sheets)
-```
 
 ## ReadData
 
-#### The ReadData function reads in the raw data, converts columns to factors for analysis and calculates the corresponding proportions for each area on the plate. Additionally mean, sd and se are calculated for QC plots. This new data file is saved as 'data_proportional.xlsx' in the 'Data_analysis' folder, created by ReadData function. 
-#### To apply the LME-Model ReadData converts the data frame in long format - 'data_prop_long.xlsx"
+*ReadData* first creates one directory for each experiment (sheet in excel file)    
+Then *ReadData* reads in the raw data, converts columns to factors for analysis and calculates the corresponding proportions for each segment on the plate. Additionally mean, sd and se are calculated for QC plots. This new data file is saved as **'data_proportional.xlsx'** in the **'Data_analysis'** directory, created by *ReadData*.    
+To apply LME-Model *ReadData* converts the data frame in long format  **'data_prop_long.xlsx'**, which is also saved in Data_analysis directory.    
+*ReadData* returns a **list with data_proportional & data_prop_long**  
 
-```{r}
-ReadData(file,sheets)
+```{r, echo=FALSE, message=FALSE, results='hide'}
+ReadData_out = ReadData(file)
 ```
 
 #### Files created by ReadData:
  
-#### data_proportional:
+**data_proportional:**    
 ```{r}
-head(read.xlsx('Data_analysis/data_proportional.xlsx',sheet='LD'))
+# Call directly in R
+# ReadData_out$LD$data_proportional
+# Or look at excel file
+knitr::kable(head(read.xlsx('Data_analysis/data_proportional.xlsx',sheet='LD')))
 ```
 
-#### data_prop_long
+**data_prop_long**    
 ```{r}
-head(read.xlsx('Data_analysis/data_prop_long.xlsx',sheet='LD'))
+# Call directly in R
+# ReadData_out$LD$data_prop_long
+# Or look at excel file
+knitr::kable(head(read.xlsx('Data_analysis/data_prop_long.xlsx',sheet='LD')))
 ```
  
 ## plotTimeCourse 
-#### Saves one png file for each experiment, plotting the raw data (mean proportion & se) for each plate & condition  over time. 
+Saves one png file for each experiment, plotting the raw data (mean proportion & se) for each plate & condition  over time.    
 ```{r}
-plotTimeCourse(file='Data_analysis/data_proportional.xlsx',sheets)
+plotTimeCourse(file='Data_analysis/data_proportional.xlsx')
 ```
 
-#### Output for the 'LD' experiment:
+**Output for 'LD' experiment:**    
 
 ```{r , echo=FALSE, out.width= '50%'}
 knitr::include_graphics('LD/LD_timecourse.png')
@@ -104,13 +102,13 @@ knitr::include_graphics('LD/LD_timecourse.png')
 
 ## plotMeanSE
 
-#### Saves one png file for each experiment, plotting the raw data (se over mean proportion) for each condition.
+Saves one png file for each experiment, plotting the raw data (se over mean proportion) for each condition.    
 ```{r}
-plotMeanSE(file='Data_analysis/data_proportional.xlsx',sheets)
+plotMeanSE(file='Data_analysis/data_proportional.xlsx')
 ```
 
 
-#### Output for the 'LD' experiment:
+**Output for 'LD' experiment:**
 
 ```{r , echo=FALSE, out.width= '50%'}
 knitr::include_graphics('LD/LD_mean_se.png')
@@ -118,50 +116,66 @@ knitr::include_graphics('LD/LD_mean_se.png')
 ```
 
 ## runANOVA 
-#### Applies LME-Models and runs ANOVA for each experiment separately and returns results.
-#### ANOVA.txt: Complete collection of all results
-#### RandomEffectSummary.xlsx: Summarized results for RandomEffects and ANOVA_summary
+Applies lme-models and runs ANOVA for each experiment separately and returns results.    
+**results.txt**: Complete collection lme-model & ANOVA results   
+**summary_results.xlsx**: Summarized results for lme-model and ANOVA   
 ```{r}
-runANOVA(file='Data_analysis/data_prop_long.xlsx', sheets)
+runANOVA_out = runANOVA(file='Data_analysis/data_prop_long.xlsx')
 ```
 
-#### ANOVA.txt for 'LD' experiment:
-```{r}
-complete_results = read.csv('LD/ANOVA.txt')
-head(complete_results,30)
+**results.txt for 'LD' experiment:**
+```{r comment=''}
+cat(readLines('LD/results.txt',80), sep='\n')
 ```
 
-#### Time specific effects on the proportion of sprouted spores in each condition - again for the 'LD' experiment:
+**Time specific effects on the proportion of sprouted spores in each condition - again for 'LD' experiment:**    
 ```{r}
-time_effects = read.xlsx('LD/RandomEffectSummary.xlsx', sheet='Random_Effects')
-head(time_effects, 20)
+time_effects = read.xlsx('LD/summary_results.xlsx', sheet='LME-Model_by_time')
+options(knitr.kable.NA='')
+knitr::kable(head(time_effects, 20))
 
 ```
 
-#### ANOVA summary for effect on all time points - again for the 'LD' experiment:
+**ANOVA summary for effect on all time points - again for 'LD' experiment:**   
 ```{r}
-overall_effects = read.xlsx('LD/RandomEffectSummary.xlsx', sheet='ANOVA_summary')
-overall_effects
+overall_effects = read.xlsx('LD/summary_results.xlsx', sheet='ANOVA_summary')
+options(knitr.kable.NA='')
+knitr::kable(overall_effects)
+
 ```
 
 ## Example code for complete analysis:
 
 ```{r}
+
 library(CountSpores)
 
-file = "exampleData/hormoneassay_rensing_2019.xlsx"
-sheets = c('LD', 'ABA', 'GA3')
+file = "exampleData/example.xlsx"
 
-CreateOutputFolders(sheets)
-
-ReadData(file,sheets)
-
-plotTimeCourse(file='Data_analysis/data_proportional.xlsx',sheets)
-
-plotMeanSE(file='Data_analysis/data_proportional.xlsx',sheets)
-
-runANOVA(file='Data_analysis/data_prop_long.xlsx', sheets)
+example_result = runCountSpores(file)
 
 ```
 
+All results from *CountSpores* pipeline are now saved in result folders as described above.    
+For further downstream analysis in *R*, data for analysis and results from lme-model and ANOVA (stored all together in results.txt) can be accessed like this:      
+  
+Access **data_prop_long** for **GA3** experiment    
+
+```{r}
+knitr::kable(head(example_result$ReadData_out$GA3$data_prop_long))
+
+```
+
+Access result from **linear mixed effects model** for **GA3** experiment and **'9650_KO'** as reference level   
+
+```{r}
+example_result$runANOVA_out$GA3$lme$`9650_KO`
+
+```
+
+Access result from **ANOVA** for **GA3** experiment and **'9650_KO'** as reference level   
+
+```{r}
+example_result$runANOVA_out$GA3$anova$`9650_KO`
+```
 

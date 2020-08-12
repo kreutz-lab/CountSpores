@@ -2,22 +2,30 @@
 % Please edit documentation in R/runANOVA.R
 \name{runANOVA}
 \alias{runANOVA}
-\title{fits lme-model to data, loops over all reference levels and runs ANOVA}
+\title{fits lme-model to data, loops over all possible reference levels and runs ANOVA}
 \usage{
-runANOVA(file, sheets)
+runANOVA(file = "Data_analysis/data_prop_long.xlsx")
 }
 \arguments{
-\item{file}{path to raw data file}
-
-\item{sheets}{character vector with sheetnames of raw data file}
+\item{file}{path to data_prop_long}
 }
 \value{
 Data_analysis  folder to store converted data files in excel format
 
-RandomEffectSummary.txt summarized output for effect, se and p-value for each condition and timepoint
+results.txt Output of lme-model and ANOVA for all possible reference levels
 
-ANOVAsummary.txt p-values for each condition, testing for effect on all timepoints
+summary_results.xlsx Excel file with complete test results and summarized views:
+
+summary_results.xlsx sheet:LME-Model Complete output of lme-model
+
+summary_results.xlsx sheet: ANOVA Complete output of ANOVA
+
+summary_results.xlsx sheet: LME-Model_by_time Summary on Estimate, SE and pvalue for each timepoint
+
+summary_results.xlsx sheet: ANOVA_summary Summarized ANOVA results based on 'Condition'
+
+CountSpores_res List of lists of length corresponding to number of experiments. Each list entry consists of lmem and anova
 }
 \description{
-fits lme-model to data, loops over all reference levels and runs ANOVA
+fits lme-model to data, loops over all possible reference levels and runs ANOVA
 }

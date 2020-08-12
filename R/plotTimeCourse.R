@@ -1,25 +1,15 @@
 #' @name plotTimeCourse
 #' @title plot raw data over time for each experiment
-#' @param file path to raw data file
-#' @param sheetnames character vector with sheetnames of raw data file
+#' @param file path to data_proportional
 #' @return 'sheetname'_timecourse.png in 'sheetname' folder
 #' @export
 
 
-plotTimeCourse = function(file, sheetnames){
+plotTimeCourse = function(file='Data_analysis/data_proportional.xlsx'){
+  sheets <- openxlsx::getSheetNames(file)
+  for (i in 1:length(sheets)){
 
-  for (i in 1:length(sheetnames)){
-
-    data_raw = openxlsx::read.xlsx(file, sheet=paste(sheetnames[i]))
-    #data_raw$Prop1 = data_raw$Area1/data_raw$Area1_total*100
-    #data_raw$Prop2 = data_raw$Area2/data_raw$Area2_total*100
-    #data_raw$Prop3 = data_raw$Area3/data_raw$Area3_total*100
-
-
-    #data_raw$Mean = rowMeans(data_raw[,which(colnames(data_raw) %in% c('Prop1','Prop2','Prop3'))])
-    #data_raw$sd = apply(data_raw[,which(colnames(data_raw) %in% c('Prop1','Prop2','Prop3'))],1,sd)
-    #data_raw$se = data_raw$sd/sqrt(3)
-    #data_raw$plot_ID = paste(data_raw$Condition,data_raw$Plate,sep="")
+    data_raw = openxlsx::read.xlsx(file, sheet=paste(sheets[i]))
 
     ggplot2::ggplot(data_raw, aes(x=Day, y=Mean, group=plot_ID, color=Condition)) +
       geom_point(size=0.1)+
@@ -27,11 +17,11 @@ plotTimeCourse = function(file, sheetnames){
       geom_pointrange(aes(ymin=Mean-se, ymax=Mean+se), size=0.5, fatten=0.2) +
       theme_bw()+
       ylab("Proportion")+
-      ggtitle(paste(sheetnames[i]))+
+      ggtitle(paste(sheets[i]))+
       theme(plot.title=element_text(hjust=0.5, face='bold'))
 
 
-    ggplot2::ggsave(paste(paste(sheetnames[i]),'/', paste(sheetnames[i]),'_timecourse.png',sep=""), height=4, width=5)
+    ggplot2::ggsave(paste(paste(sheets[i]),'/', paste(sheets[i]),'_timecourse.png',sep=""), height=4, width=5)
 
   }
 }

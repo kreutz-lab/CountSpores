@@ -1,149 +1,162 @@
 #' @name runANOVA
-#' @title fits lme-model to data, loops over all reference levels and runs ANOVA
-#' @param file path to raw data file
-#' @param sheets character vector with sheetnames of raw data file
+#' @title fits lme-model to data, loops over all possible reference levels and runs ANOVA
+#' @param file path to data_prop_long
 #' @return Data_analysis  folder to store converted data files in excel format
-#' @return RandomEffectSummary.txt summarized output for effect, se and p-value for each condition and timepoint
-#' @return ANOVAsummary.txt p-values for each condition, testing for effect on all timepoints
+#' @return results.txt Output of lme-model and ANOVA for all possible reference levels
+#' @return summary_results.xlsx Excel file with complete test results and summarized views:
+#' @return summary_results.xlsx sheet:LME-Model Complete output of lme-model
+#' @return summary_results.xlsx sheet: ANOVA Complete output of ANOVA
+#' @return summary_results.xlsx sheet: LME-Model_by_time Summary on Estimate, SE and pvalue for each timepoint
+#' @return summary_results.xlsx sheet: ANOVA_summary Summarized ANOVA results based on 'Condition'
+#' @return returns list of lists: aggregating for each experiment the result objects per reference level for lme-model & ANOVA
 #' @export
 
 
 
 
-runANOVA = function(file,sheets){
+runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
+
+  sheets <- openxlsx::getSheetNames(file)
+  runANOVA_out = vector(mode='list', length=length(sheets))
+  names(runANOVA_out) = sheets
+
   for (s in 1:length(sheets)){
 
-    #Read in data for main analysis - convert to correct format
-
+    # Read in data for main analysis - convert to correct format
     dat = read.xlsx(paste(file), sheet= paste(sheets)[s])
-    #str(dat)
-    #dat[,c('Condition','Plate','Day','is9650_KO','is11750_KO','is14620_KO','isRe_15','is9_14_DKO')] = lapply( dat[,c('Condition','Plate','Day','is9650_KO','is11750_KO','is14620_KO','isRe_15','is9_14_DKO')], factor)
     dat[,-which(colnames(dat)%in% c('Proportion'))] = lapply(dat[,-which(colnames(dat)%in% c('Proportion'))], factor)
 
-
+    # Get reference levels & corresponding names of design matrix
     clev <<- unique(dat$Condition)
     cname <<- paste('is', clev, sep="")
 
 
-    #create output file
-    path = paste(paste(sheets)[s],'/ANOVA.txt',sep="")
-    sink(file=path)
+    # Save one txt file with all results
+    # ______________________________________________________________________
+    path = paste(paste(sheets)[s],'/results.txt',sep="")
 
+    sink(file=path)
     writeLines(paste('*** Results for',paste(sheets)[s],' ***\n' ))
 
-    fit <<- list()
-    anov <<- list()
+    fit <<- vector(mode='list', length=length(clev))
+    names(fit) <<- clev
+    anov <<- vector(mode='list', length=length(clev))
+    names(anov)<<- clev
 
+    # Loop over all possible reference levels
     for (c in 1:length(clev)){
-
-
-      #Remove biasing zeros - remove data from day 1 with Prop=0 and not in reference condition
+      # Remove biasing zeros - remove data from day 1 with Prop=0 and not in reference condition
       dat1 = filter(dat, !(dat$Day==1 & dat[,which(colnames(dat)==cname[c])]==0 & dat$Proportion==0))
 
-      #Relevel to given Condition c
+      # Relevel to given Condition c
       dat1$Condition = relevel(dat1$Condition, ref=paste(clev[c]))
-
 
       writeLines(paste("\n\n------------------------------------ \n", paste0('*** Take ', clev[c] ,' as intercept ***\n')))
 
-      #Remove intercept condition
+      # Remove intercept condition
       c2 = cname[-c]
+      # Define formula for lme-model
       formula = paste0("Proportion ~ Day +", paste0(paste0(c2,':Day',sep=""),collapse="+"),"+",paste0(paste0('(1|Plate:',c2,')',sep=""),collapse="+"),sep="")
 
-
-
+      # Apply lme-model and save result
 
       fit[[c]] <<- lmer(formula, dat1)
-
       print(summary(fit[[c]]))
-
+      # Apply ANOVA and save result
       anov[[c]] <<- anova(fit[[c]])
       print(anov[[c]])
 
-
     }
     sink()
+    # _____________________________________________________________________
 
 
 
-    # Time pvalues
-    #path = paste(paste(sheets)[s],'/RandomEffectSummary.txt',sep="")
 
-    #sink(file=path, type='output')
-    #myfile <- file(path, 'w')
-
-    times = c(2:7)
+    runANOVA_out[[s]] = list(lme = fit, anova = anov)
 
 
-    random_effects <<- pickTimePvalues(fit,cname,times)
+    # Save all results with summaries in one excel file
+    # _____________________________________________________________________
 
-
-    # writeLines(paste('Analyzing data in sheet ', paste(sheets[s]), '\n------------------------------------\n', sep=""),myfile, sep='')
-    #
-    # for (t in 1:length(times)){
-    #
-    #
-    #   writeLines(paste('\n Testing the difference for time point ', times[t] ,'\n', sep=""), myfile,sep='')
-    #   writeLines(paste('\n Estimated difference: \n\n'), myfile,sep='')
-    #   write.table(data.frame(random_effects$estTbl[[t]]), na='\t', sep='\t', col.names=NA, myfile)
-    #   writeLines(paste('\n Standard Error (SE): \n\n'), myfile,sep='')
-    #   write.csv(data.frame(random_effects$seTbl[[t]]), myfile)
-    #   writeLines(paste('\n p-values: \n\n'), myfile,sep='')
-    #   write.csv(data.frame(random_effects$pTbl[[t]]),myfile)
-    #   writeLines(paste('\n\n--------------------------------------------\n'), myfile,sep='')
-    # }
-
-    #sink()
-
-
-    path = paste(paste(sheets)[s],'/RandomEffectSummary.xlsx',sep="")
+    path = paste(paste(sheets)[s],'/summary_results.xlsx',sep="")
     wb = createWorkbook()
-    addWorksheet(wb,'Random_Effects')
+    addWorksheet(wb, 'LME-Model')
+    addWorksheet(wb, 'ANOVA')
+    addWorksheet(wb,'LME-Model_by_time')
     addWorksheet(wb, 'ANOVA_summary')
-    writeData(wb, 'Random_Effects', paste('Analyzing data in sheet ', paste(sheets[s]), sep=""), startCol = 1, startRow = 1)
-
-    curr_row=3
-    #test_style = openxlsx::createStyle(fontName='Calibri',fontSize = 13,fontColour = 'darkblue', textDecoration = 'bold', border='bottom', borderColour = 'darkblue')
-
-    for (t in 1:length(times)){
-      curr_row = curr_row
-      writeData(wb,'Random_Effects',paste(' Testing the difference for time point ', times[t], sep=""),startCol=1, startRow=curr_row)
-
-      writeData(wb,'Random_Effects', paste('Estimated difference:'), startCol = 1, startRow = curr_row+2)
-      est = data.frame(random_effects$estTbl[[t]])
-      writeData(wb,'Random_Effects', est ,rowNames=TRUE, startCol=1, startRow = curr_row+4)
-      curr_row = curr_row + 6 + nrow(est)
-
-      writeData(wb, 'Random_Effects', paste('Standard Error (SE):'), startCol = 1, startRow = curr_row)
-      se = data.frame(random_effects$seTbl[[t]])
-      writeData(wb, 'Random_Effects', se ,rowNames=TRUE, startCol = 1, startRow = curr_row+2)
-      curr_row = curr_row+3+nrow(se)
-      writeData(wb, 'Random_Effects',paste('p-values:'), startCol = 1, startRow = curr_row+1)
-      pdat = data.frame(random_effects$pTbl[[t]])
-      writeData(wb, 'Random_Effects',pdat ,rowNames=TRUE, startCol = 1, startRow = curr_row+3)
-      curr_row = curr_row + 6 + nrow(pdat)
 
 
+
+    # Save LME-Model results
+    res_lme_list = list()
+
+    for (c in 1: length(clev)){
+
+      res_lme = data.frame(coefficients(summary(fit[[c]])))
+    res_lme$refLevel = rep(paste(clev[c]), nrow(res_lme))
+    res_lme_list[[c]] = res_lme
     }
 
-    #saveWorkbook(wb,path , overwrite = TRUE)
+    res_lme = do.call(rbind, res_lme_list)
+    res_lme %>% dplyr::rename(SE = Std..Error,
+                              tvalue = t.value,
+                              pvalue = Pr...t..)
+    res_lme %>% dplyr::relocate(refLevel)
+    writeData(wb, 'LME-Model',res_lme, rowNames=TRUE)
 
 
 
 
-    # ANOVA pvalues
-    #path = paste(paste(sheets)[s],'/ANOVASummary.txt',sep="")
-    #sink(file=path)
+    # Save ANOVA results
+    res_anova_list = list()
+
+    for (c in 1: length(clev)){
+
+      res_anova = data.frame(anov[[c]])
+      res_anova$refLevel = rep(paste(clev[c]), nrow(res_anova))
+      res_anova_list[[c]] = res_anova
+    }
+
+    res_anova = do.call(rbind, res_anova_list)
+    res_anova %>% dplyr::rename(Fvalue = F.value,
+                                pvalue = Pr..F.)
+    res_anova %>% dplyr::relocate(refLevel)
+    writeData(wb, 'ANOVA',res_anova, rowNames=TRUE)
 
 
-    anova_res <<- pickAnovaPvalues(anov,cname)
 
 
-    #writeLines(paste('Analyzing data in sheet ', paste(sheets[s]), '\n------------------------------------\n', sep=""))
+    # Save LME-Model results sorted by timepoints, all reference levels aggregated in one table
+    times = c(2:7)
 
-    #writeLines(paste('\n Testing for an impact on ALL time points:\n'))
-    #writeLines(paste('\n p-values for ANOVA: \n\n'))
-    #print(anova_res)
+    random_effects <- pickTimePvalues(fit,cname,times)
+    writeData(wb, 'LME-Model_by_time', paste('Analyzing data in sheet ', paste(sheets[s]), sep=""), startCol = 1, startRow = 1)
+
+    curr_row=3
+    for (t in 1:length(times)){
+      curr_row = curr_row
+      writeData(wb,'LME-Model_by_time',paste(' Testing the difference for time point ', times[t], sep=""),startCol=1, startRow=curr_row)
+
+      writeData(wb,'LME-Model_by_time', paste('Estimated difference:'), startCol = 1, startRow = curr_row+2)
+      est = data.frame(random_effects$estTbl[[t]])
+      writeData(wb,'LME-Model_by_time', est ,rowNames=TRUE, startCol=1, startRow = curr_row+4)
+      curr_row = curr_row + 6 + nrow(est)
+      writeData(wb, 'LME-Model_by_time', paste('Standard Error (SE):'), startCol = 1, startRow = curr_row)
+      se = data.frame(random_effects$seTbl[[t]])
+      writeData(wb, 'LME-Model_by_time', se ,rowNames=TRUE, startCol = 1, startRow = curr_row+2)
+      curr_row = curr_row+3+nrow(se)
+      writeData(wb, 'LME-Model_by_time',paste('p-values:'), startCol = 1, startRow = curr_row+1)
+      pdat = data.frame(random_effects$pTbl[[t]])
+      writeData(wb, 'LME-Model_by_time',pdat ,rowNames=TRUE, startCol = 1, startRow = curr_row+3)
+      curr_row = curr_row + 6 + nrow(pdat)
+    }
+
+
+
+
+    # Save ANOVA results, all reference levels aggregated in one table
+    anova_res <- pickAnovaPvalues(anov,cname)
 
     writeData(wb, 'ANOVA_summary', paste('Analyzing data in sheet ', paste(sheets[s]), sep=""), startCol = 1, startRow = 1)
     writeData(wb, 'ANOVA_summary', paste('Testing for an impact on ALL time points: '), startCol = 1, startRow = 3)
@@ -151,7 +164,9 @@ runANOVA = function(file,sheets){
     writeData(wb, 'ANOVA_summary',anova_res, rowNames = TRUE, startCol = 1, startRow = 6)
 
     saveWorkbook(wb,path , overwrite = TRUE)
-    #sink()
 
   }
+
+return(runANOVA_out)
+
 }

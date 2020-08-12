@@ -4,12 +4,10 @@
 \alias{plotTimeCourse}
 \title{plot raw data over time for each experiment}
 \usage{
-plotTimeCourse(file, sheetnames)
+plotTimeCourse(file = "Data_analysis/data_proportional.xlsx")
 }
 \arguments{
-\item{file}{path to raw data file}
-
-\item{sheetnames}{character vector with sheetnames of raw data file}
+\item{file}{path to data_proportional}
 }
 \value{
 'sheetname'_timecourse.png in 'sheetname' folder

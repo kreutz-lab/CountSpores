@@ -14,7 +14,8 @@ Depends:
   lmerTest,
   ggplot2,
   dplyr,
-  tidyr
+  tidyr,
+  knitr
 RoxygenNote: 7.1.0
 Suggests: 
     knitr,
