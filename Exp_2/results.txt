@@ -1,0 +1,368 @@
+*** Results for Exp_2  ***
+
+
+
+------------------------------------ 
+ *** Take Cond_1 as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1516.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.3624 -0.2780  0.0083  0.2735  4.6522 
+
+Random effects:
+ Groups         Name        Variance Std.Dev.
+ Plate:isCond_2 (Intercept)  0.000   0.000   
+ Plate:isCond_3 (Intercept)  2.933   1.713   
+ Plate:isCond_4 (Intercept) 57.091   7.556   
+ Plate:isCond_5 (Intercept)  1.717   1.310   
+ Residual                   18.173   4.263   
+Number of obs: 279, groups:  
+Plate:isCond_2, 6; Plate:isCond_3, 6; Plate:isCond_4, 6; Plate:isCond_5, 6
+
+Fixed effects:
+                 Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)    -1.050e-12  4.754e+00  4.886e+00   0.000 1.000000    
+Day2            3.505e-02  2.010e+00  2.402e+02   0.017 0.986100    
+Day3            3.078e+00  2.010e+00  2.402e+02   1.532 0.126935    
+Day4            4.627e+00  2.010e+00  2.402e+02   2.303 0.022159 *  
+Day5            6.494e+00  2.010e+00  2.402e+02   3.232 0.001403 ** 
+Day6            8.863e+00  2.010e+00  2.402e+02   4.410 1.56e-05 ***
+Day7            1.209e+01  2.010e+00  2.402e+02   6.014 6.70e-09 ***
+Day2:isCond_21 -3.505e-02  2.010e+00  2.402e+02  -0.017 0.986100    
+Day3:isCond_21 -2.747e+00  2.010e+00  2.402e+02  -1.367 0.172976    
+Day4:isCond_21 -3.954e+00  2.010e+00  2.402e+02  -1.968 0.050260 .  
+Day5:isCond_21 -5.480e+00  2.010e+00  2.402e+02  -2.727 0.006865 ** 
+Day6:isCond_21 -7.302e+00  2.010e+00  2.402e+02  -3.634 0.000342 ***
+Day7:isCond_21 -7.882e+00  2.010e+00  2.402e+02  -3.922 0.000114 ***
+Day2:isCond_31 -3.505e-02  2.448e+00  1.159e+01  -0.014 0.988822    
+Day3:isCond_31 -2.391e+00  2.448e+00  1.159e+01  -0.976 0.348769    
+Day4:isCond_31 -3.245e+00  2.448e+00  1.159e+01  -1.325 0.210581    
+Day5:isCond_31 -4.146e+00  2.448e+00  1.159e+01  -1.693 0.117072    
+Day6:isCond_31 -4.689e+00  2.448e+00  1.159e+01  -1.915 0.080448 .  
+Day7:isCond_31 -2.200e+00  2.448e+00  1.159e+01  -0.899 0.387150    
+Day2:isCond_41 -3.505e-02  6.488e+00  4.128e+00  -0.005 0.995941    
+Day3:isCond_41 -3.078e+00  6.488e+00  4.128e+00  -0.474 0.659244    
+Day4:isCond_41  1.270e+00  6.488e+00  4.128e+00   0.196 0.854130    
+Day5:isCond_41  4.477e+00  6.488e+00  4.128e+00   0.690 0.527032    
+Day6:isCond_41  5.122e+00  6.488e+00  4.128e+00   0.789 0.472728    
+Day7:isCond_41  5.663e+00  6.488e+00  4.128e+00   0.873 0.430607    
+Day2:isCond_51 -3.505e-02  2.277e+00  1.899e+01  -0.015 0.987878    
+Day3:isCond_51 -8.770e-01  2.277e+00  1.899e+01  -0.385 0.704373    
+Day4:isCond_51 -1.562e+00  2.277e+00  1.899e+01  -0.686 0.501079    
+Day5:isCond_51  1.380e+00  2.277e+00  1.899e+01   0.606 0.551556    
+Day6:isCond_51  6.243e+00  2.277e+00  1.899e+01   2.742 0.012961 *  
+Day7:isCond_51  1.050e+01  2.277e+00  1.899e+01   4.612 0.000191 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+convergence code: 0
+boundary (singular) fit: see ?isSingular
+
+Type III Analysis of Variance Table with Satterthwaite's method
+              Sum Sq Mean Sq NumDF   DenDF F value    Pr(>F)    
+Day          1087.54 181.257     6 240.183  9.9739 7.841e-10 ***
+Day:isCond_2  759.02 126.503     6 240.183  6.9610 7.754e-07 ***
+Day:isCond_3  115.46  19.243     6   3.581  1.0589   0.50957    
+Day:isCond_4  269.77  44.961     6  10.700  2.4740   0.09363 .  
+Day:isCond_5  578.76  96.461     6   4.517  5.3079   0.05220 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+------------------------------------ 
+ *** Take Cond_2 as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1515
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.3822 -0.2681 -0.0042  0.2218  4.6616 
+
+Random effects:
+ Groups         Name        Variance Std.Dev.
+ Plate:isCond_1 (Intercept)  1.8170  1.3480  
+ Plate:isCond_3 (Intercept)  1.1162  1.0565  
+ Plate:isCond_4 (Intercept) 79.3924  8.9102  
+ Plate:isCond_5 (Intercept)  0.3191  0.5649  
+ Residual                   18.0410  4.2475  
+Number of obs: 279, groups:  
+Plate:isCond_1, 6; Plate:isCond_3, 6; Plate:isCond_4, 6; Plate:isCond_5, 6
+
+Fixed effects:
+                 Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)    -4.881e-13  5.436e+00  3.855e+00   0.000  1.00000    
+Day2            1.504e-14  2.002e+00  2.384e+02   0.000  1.00000    
+Day3            3.313e-01  2.002e+00  2.384e+02   0.165  0.86874    
+Day4            6.731e-01  2.002e+00  2.384e+02   0.336  0.73705    
+Day5            1.014e+00  2.002e+00  2.384e+02   0.507  0.61290    
+Day6            1.560e+00  2.002e+00  2.384e+02   0.779  0.43664    
+Day7            4.203e+00  2.002e+00  2.384e+02   2.099  0.03685 *  
+Day2:isCond_11  3.505e-02  2.285e+00  1.140e+01   0.015  0.98803    
+Day3:isCond_11  2.747e+00  2.285e+00  1.140e+01   1.202  0.25370    
+Day4:isCond_11  3.954e+00  2.285e+00  1.140e+01   1.731  0.11048    
+Day5:isCond_11  5.480e+00  2.285e+00  1.140e+01   2.398  0.03461 *  
+Day6:isCond_11  7.302e+00  2.285e+00  1.140e+01   3.196  0.00817 ** 
+Day7:isCond_11  7.882e+00  2.285e+00  1.140e+01   3.450  0.00516 ** 
+Day2:isCond_31 -5.658e-16  2.180e+00  1.553e+01   0.000  1.00000    
+Day3:isCond_31  3.560e-01  2.180e+00  1.553e+01   0.163  0.87240    
+Day4:isCond_31  7.093e-01  2.180e+00  1.553e+01   0.325  0.74926    
+Day5:isCond_31  1.334e+00  2.180e+00  1.553e+01   0.612  0.54937    
+Day6:isCond_31  2.613e+00  2.180e+00  1.553e+01   1.199  0.24862    
+Day7:isCond_31  5.682e+00  2.180e+00  1.553e+01   2.606  0.01943 *  
+Day2:isCond_41  6.449e-13  7.546e+00  3.527e+00   0.000  1.00000    
+Day3:isCond_41 -3.313e-01  7.546e+00  3.527e+00  -0.044  0.96735    
+Day4:isCond_41  5.224e+00  7.546e+00  3.527e+00   0.692  0.53161    
+Day5:isCond_41  9.957e+00  7.546e+00  3.527e+00   1.320  0.26610    
+Day6:isCond_41  1.242e+01  7.546e+00  3.527e+00   1.647  0.18445    
+Day7:isCond_41  1.355e+01  7.546e+00  3.527e+00   1.795  0.15660    
+Day2:isCond_51 -8.548e-16  2.055e+00  2.973e+01   0.000  1.00000    
+Day3:isCond_51  1.870e+00  2.055e+00  2.973e+01   0.910  0.37017    
+Day4:isCond_51  2.393e+00  2.055e+00  2.973e+01   1.164  0.25350    
+Day5:isCond_51  6.860e+00  2.055e+00  2.973e+01   3.339  0.00228 ** 
+Day6:isCond_51  1.355e+01  2.055e+00  2.973e+01   6.592 2.82e-07 ***
+Day7:isCond_51  1.838e+01  2.055e+00  2.973e+01   8.946 6.22e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+Type III Analysis of Variance Table with Satterthwaite's method
+              Sum Sq Mean Sq NumDF   DenDF F value   Pr(>F)   
+Day           117.37   19.56     6 238.376  1.0843 0.372438   
+Day:isCond_1  396.10   66.02     6   2.000  3.6593 0.230135   
+Day:isCond_3  141.68   23.61     6   2.000  1.3089 0.493691   
+Day:isCond_4  855.67  142.61     6   8.604  7.9049 0.004045 **
+Day:isCond_5 2263.73  377.29     6   2.000 20.9129 0.046333 * 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+------------------------------------ 
+ *** Take Cond_3 as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1515.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.3914 -0.2191 -0.0248  0.2187  4.6632 
+
+Random effects:
+ Groups         Name        Variance Std.Dev.
+ Plate:isCond_1 (Intercept)  3.680   1.9185  
+ Plate:isCond_2 (Intercept)  0.686   0.8282  
+ Plate:isCond_4 (Intercept) 98.429   9.9211  
+ Plate:isCond_5 (Intercept)  0.000   0.0000  
+ Residual                   17.993   4.2418  
+Number of obs: 279, groups:  
+Plate:isCond_1, 6; Plate:isCond_2, 6; Plate:isCond_4, 6; Plate:isCond_5, 6
+
+Fixed effects:
+                 Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)    -1.318e-12  6.022e+00  4.391e+00   0.000  1.00000    
+Day2            4.511e-14  2.000e+00  2.378e+02   0.000  1.00000    
+Day3            6.872e-01  2.000e+00  2.378e+02   0.344  0.73138    
+Day4            1.382e+00  2.000e+00  2.378e+02   0.691  0.49003    
+Day5            2.349e+00  2.000e+00  2.378e+02   1.175  0.24133    
+Day6            4.174e+00  2.000e+00  2.378e+02   2.087  0.03794 *  
+Day7            9.886e+00  2.000e+00  2.378e+02   4.944 1.45e-06 ***
+Day2:isCond_11  3.505e-02  2.540e+00  9.132e+00   0.014  0.98929    
+Day3:isCond_11  2.391e+00  2.540e+00  9.132e+00   0.941  0.37084    
+Day4:isCond_11  3.245e+00  2.540e+00  9.132e+00   1.277  0.23296    
+Day5:isCond_11  4.146e+00  2.540e+00  9.132e+00   1.632  0.13661    
+Day6:isCond_11  4.689e+00  2.540e+00  9.132e+00   1.846  0.09749 .  
+Day7:isCond_11  2.200e+00  2.540e+00  9.132e+00   0.866  0.40860    
+Day2:isCond_21  4.327e-15  2.111e+00  3.958e+01   0.000  1.00000    
+Day3:isCond_21 -3.560e-01  2.111e+00  3.958e+01  -0.169  0.86694    
+Day4:isCond_21 -7.093e-01  2.111e+00  3.958e+01  -0.336  0.73862    
+Day5:isCond_21 -1.334e+00  2.111e+00  3.958e+01  -0.632  0.53093    
+Day6:isCond_21 -2.613e+00  2.111e+00  3.958e+01  -1.238  0.22299    
+Day7:isCond_21 -5.682e+00  2.111e+00  3.958e+01  -2.692  0.01036 *  
+Day2:isCond_41  1.204e-12  8.344e+00  4.093e+00   0.000  1.00000    
+Day3:isCond_41 -6.872e-01  8.344e+00  4.093e+00  -0.082  0.93823    
+Day4:isCond_41  4.514e+00  8.344e+00  4.093e+00   0.541  0.61658    
+Day5:isCond_41  8.623e+00  8.344e+00  4.093e+00   1.033  0.35856    
+Day6:isCond_41  9.811e+00  8.344e+00  4.093e+00   1.176  0.30347    
+Day7:isCond_41  7.863e+00  8.344e+00  4.093e+00   0.942  0.39822    
+Day2:isCond_51  2.335e-15  2.000e+00  2.378e+02   0.000  1.00000    
+Day3:isCond_51  1.514e+00  2.000e+00  2.378e+02   0.757  0.44980    
+Day4:isCond_51  1.683e+00  2.000e+00  2.378e+02   0.842  0.40074    
+Day5:isCond_51  5.526e+00  2.000e+00  2.378e+02   2.763  0.00617 ** 
+Day6:isCond_51  1.093e+01  2.000e+00  2.378e+02   5.467 1.15e-07 ***
+Day7:isCond_51  1.270e+01  2.000e+00  2.378e+02   6.351 1.08e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+convergence code: 0
+boundary (singular) fit: see ?isSingular
+
+Type III Analysis of Variance Table with Satterthwaite's method
+              Sum Sq Mean Sq NumDF   DenDF F value    Pr(>F)    
+Day           668.43 111.404     6 237.808  6.1916 4.702e-06 ***
+Day:isCond_1  106.57  17.762     6   2.876  0.9872   0.55324    
+Day:isCond_2  151.97  25.328     6   6.382  1.4077   0.33847    
+Day:isCond_4  466.06  77.676     6  11.899  4.3170   0.01525 *  
+Day:isCond_5 1423.94 237.323     6 237.808 13.1898 6.956e-13 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+------------------------------------ 
+ *** Take Cond_4 as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1573.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.5379 -0.2184 -0.0069  0.2232  4.8300 
+
+Random effects:
+ Groups         Name        Variance Std.Dev.
+ Plate:isCond_1 (Intercept) 21.21    4.605   
+ Plate:isCond_2 (Intercept) 30.96    5.564   
+ Plate:isCond_3 (Intercept) 46.42    6.813   
+ Plate:isCond_5 (Intercept) 43.42    6.590   
+ Residual                   21.50    4.637   
+Number of obs: 279, groups:  
+Plate:isCond_1, 6; Plate:isCond_2, 6; Plate:isCond_3, 6; Plate:isCond_5, 6
+
+Fixed effects:
+                 Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)    -1.134e-14  7.052e+00  8.671e+00   0.000  1.00000    
+Day2           -3.702e-14  2.186e+00  2.365e+02   0.000  1.00000    
+Day3           -3.066e-14  2.186e+00  2.365e+02   0.000  1.00000    
+Day4            5.897e+00  2.186e+00  2.365e+02   2.698  0.00749 ** 
+Day5            1.097e+01  2.186e+00  2.365e+02   5.019 1.02e-06 ***
+Day6            1.398e+01  2.186e+00  2.365e+02   6.398 8.38e-10 ***
+Day7            1.775e+01  2.186e+00  2.365e+02   8.119 2.58e-14 ***
+Day2:isCond_11  3.505e-02  4.349e+00  3.522e+00   0.008  0.99401    
+Day3:isCond_11  3.078e+00  4.349e+00  3.522e+00   0.708  0.52314    
+Day4:isCond_11 -1.270e+00  4.349e+00  3.522e+00  -0.292  0.78674    
+Day5:isCond_11 -4.477e+00  4.349e+00  3.522e+00  -1.029  0.36874    
+Day6:isCond_11 -5.122e+00  4.349e+00  3.522e+00  -1.178  0.31232    
+Day7:isCond_11 -5.663e+00  4.349e+00  3.522e+00  -1.302  0.27152    
+Day2:isCond_21  2.312e-13  5.041e+00  3.215e+00   0.000  1.00000    
+Day3:isCond_21  3.313e-01  5.041e+00  3.215e+00   0.066  0.95149    
+Day4:isCond_21 -5.224e+00  5.041e+00  3.215e+00  -1.036  0.37168    
+Day5:isCond_21 -9.957e+00  5.041e+00  3.215e+00  -1.975  0.13658    
+Day6:isCond_21 -1.242e+01  5.041e+00  3.215e+00  -2.465  0.08481 .  
+Day7:isCond_21 -1.355e+01  5.041e+00  3.215e+00  -2.687  0.06925 .  
+Day2:isCond_31  2.993e-13  5.977e+00  3.104e+00   0.000  1.00000    
+Day3:isCond_31  6.872e-01  5.977e+00  3.104e+00   0.115  0.91550    
+Day4:isCond_31 -4.514e+00  5.977e+00  3.104e+00  -0.755  0.50326    
+Day5:isCond_31 -8.623e+00  5.977e+00  3.104e+00  -1.443  0.24189    
+Day6:isCond_31 -9.811e+00  5.977e+00  3.104e+00  -1.642  0.19617    
+Day7:isCond_31 -7.863e+00  5.977e+00  3.104e+00  -1.316  0.27704    
+Day2:isCond_51 -4.095e-13  5.807e+00  3.109e+00   0.000  1.00000    
+Day3:isCond_51  2.201e+00  5.807e+00  3.109e+00   0.379  0.72911    
+Day4:isCond_51 -2.831e+00  5.807e+00  3.109e+00  -0.487  0.65823    
+Day5:isCond_51 -3.097e+00  5.807e+00  3.109e+00  -0.533  0.62963    
+Day6:isCond_51  1.120e+00  5.807e+00  3.109e+00   0.193  0.85893    
+Day7:isCond_51  4.836e+00  5.807e+00  3.109e+00   0.833  0.46414    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+Type III Analysis of Variance Table with Satterthwaite's method
+              Sum Sq Mean Sq NumDF   DenDF F value  Pr(>F)    
+Day          2954.60  492.43     6 236.470 22.9010 < 2e-16 ***
+Day:isCond_1  274.62   45.77     6   3.164  2.1286 0.27740    
+Day:isCond_2  886.52  147.75     6   3.708  6.8714 0.04831 *  
+Day:isCond_3  476.29   79.38     6   4.676  3.6917 0.09411 .  
+Day:isCond_5  208.28   34.71     6   4.483  1.6144 0.32069    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+
+------------------------------------ 
+ *** Take Cond_5 as intercept ***
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: formula
+   Data: dat1
+
+REML criterion at convergence: 1515
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.3877 -0.2567 -0.0273  0.2149  4.6620 
+
+Random effects:
+ Groups         Name        Variance Std.Dev.
+ Plate:isCond_1 (Intercept)  2.9138  1.7070  
+ Plate:isCond_2 (Intercept)  0.3183  0.5641  
+ Plate:isCond_3 (Intercept)  0.4218  0.6494  
+ Plate:isCond_4 (Intercept) 91.4635  9.5637  
+ Residual                   18.0147  4.2444  
+Number of obs: 279, groups:  
+Plate:isCond_1, 6; Plate:isCond_2, 6; Plate:isCond_3, 6; Plate:isCond_4, 6
+
+Fixed effects:
+                 Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)    -1.004e-12  5.806e+00  3.911e+00   0.000 1.000000    
+Day2            7.056e-14  2.001e+00  2.355e+02   0.000 1.000000    
+Day3            2.201e+00  2.001e+00  2.355e+02   1.100 0.272444    
+Day4            3.066e+00  2.001e+00  2.355e+02   1.532 0.126807    
+Day5            7.875e+00  2.001e+00  2.355e+02   3.936 0.000109 ***
+Day6            1.511e+01  2.001e+00  2.355e+02   7.550 9.54e-13 ***
+Day7            2.258e+01  2.001e+00  2.355e+02  11.288  < 2e-16 ***
+Day2:isCond_11  3.505e-02  2.438e+00  8.265e+00   0.014 0.988873    
+Day3:isCond_11  8.770e-01  2.438e+00  8.265e+00   0.360 0.728125    
+Day4:isCond_11  1.562e+00  2.438e+00  8.265e+00   0.640 0.539262    
+Day5:isCond_11 -1.380e+00  2.438e+00  8.265e+00  -0.566 0.586426    
+Day6:isCond_11 -6.243e+00  2.438e+00  8.265e+00  -2.560 0.032775 *  
+Day7:isCond_11 -1.050e+01  2.438e+00  8.265e+00  -4.306 0.002406 ** 
+Day2:isCond_21 -1.125e-14  2.053e+00  3.416e+01   0.000 1.000000    
+Day3:isCond_21 -1.870e+00  2.053e+00  3.416e+01  -0.911 0.368866    
+Day4:isCond_21 -2.393e+00  2.053e+00  3.416e+01  -1.165 0.251952    
+Day5:isCond_21 -6.860e+00  2.053e+00  3.416e+01  -3.341 0.002029 ** 
+Day6:isCond_21 -1.355e+01  2.053e+00  3.416e+01  -6.597 1.43e-07 ***
+Day7:isCond_21 -1.838e+01  2.053e+00  3.416e+01  -8.953 1.76e-10 ***
+Day2:isCond_31  1.889e-16  2.070e+00  2.831e+01   0.000 1.000000    
+Day3:isCond_31 -1.514e+00  2.070e+00  2.831e+01  -0.731 0.470608    
+Day4:isCond_31 -1.683e+00  2.070e+00  2.831e+01  -0.813 0.422871    
+Day5:isCond_31 -5.526e+00  2.070e+00  2.831e+01  -2.670 0.012437 *  
+Day6:isCond_31 -1.093e+01  2.070e+00  2.831e+01  -5.281 1.24e-05 ***
+Day7:isCond_31 -1.270e+01  2.070e+00  2.831e+01  -6.135 1.22e-06 ***
+Day2:isCond_41  9.206e-13  8.061e+00  3.738e+00   0.000 1.000000    
+Day3:isCond_41 -2.201e+00  8.061e+00  3.738e+00  -0.273 0.799239    
+Day4:isCond_41  2.831e+00  8.061e+00  3.738e+00   0.351 0.744327    
+Day5:isCond_41  3.097e+00  8.061e+00  3.738e+00   0.384 0.721691    
+Day6:isCond_41 -1.120e+00  8.061e+00  3.738e+00  -0.139 0.896613    
+Day7:isCond_41 -4.836e+00  8.061e+00  3.738e+00  -0.600 0.583019    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+fit warnings:
+fixed-effect model matrix is rank deficient so dropping 4 columns / coefficients
+Type III Analysis of Variance Table with Satterthwaite's method
+             Sum Sq Mean Sq NumDF  DenDF F value  Pr(>F)    
+Day          4008.4  668.06     6 235.52 37.0843 < 2e-16 ***
+Day:isCond_1  557.7   92.95     6   2.00  5.1599 0.17122    
+Day:isCond_2 2264.0  377.33     6   2.00 20.9459 0.04626 *  
+Day:isCond_3 1191.2  198.53     6   2.00 11.0205 0.08552 .  
+Day:isCond_4  208.2   34.70     6   9.94  1.9264 0.17213    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

@@ -57,7 +57,7 @@ First 3 columns need to correspond to: **'Condition', 'Plate','Day'**
 Counts per segment should be followed by totals per segment and in **same order**    
 
 ```{r}
-knitr::kable(head(read.xlsx(file, sheet='LD'),15))
+knitr::kable(head(read.xlsx(file, sheet='Exp_1'),15))
 ```
 
 
@@ -77,17 +77,17 @@ ReadData_out = ReadData(file)
 **data_proportional:**    
 ```{r}
 # Call directly in R
-# ReadData_out$LD$data_proportional
+# ReadData_out$Exp_1$data_proportional
 # Or look at excel file
-knitr::kable(head(read.xlsx('Data_analysis/data_proportional.xlsx',sheet='LD')))
+knitr::kable(head(read.xlsx('Data_analysis/data_proportional.xlsx',sheet='Exp_1')))
 ```
 
 **data_prop_long**    
 ```{r}
 # Call directly in R
-# ReadData_out$LD$data_prop_long
+# ReadData_out$Exp_1$data_prop_long
 # Or look at excel file
-knitr::kable(head(read.xlsx('Data_analysis/data_prop_long.xlsx',sheet='LD')))
+knitr::kable(head(read.xlsx('Data_analysis/data_prop_long.xlsx',sheet='Exp_1')))
 ```
  
 ## plotTimeCourse 
@@ -96,10 +96,10 @@ Saves one png file for each experiment, plotting the raw data (mean proportion &
 plotTimeCourse(file='Data_analysis/data_proportional.xlsx')
 ```
 
-**Output for 'LD' experiment:**    
+**Output for 'Exp_1' experiment:**    
 
 ```{r , echo=FALSE, out.width= '50%'}
-knitr::include_graphics('LD/LD_timecourse.png')
+knitr::include_graphics('Exp_1/Exp_1_timecourse.png')
  
 ```
 
@@ -111,10 +111,10 @@ plotMeanSE(file='Data_analysis/data_proportional.xlsx')
 ```
 
 
-**Output for 'LD' experiment:**
+**Output for 'Exp_1' experiment:**
 
 ```{r , echo=FALSE, out.width= '50%'}
-knitr::include_graphics('LD/LD_mean_se.png')
+knitr::include_graphics('Exp_1/Exp_1_mean_se.png')
  
 ```
 
@@ -126,22 +126,22 @@ Applies lme-models and runs ANOVA for each experiment separately and returns res
 runANOVA_out = runANOVA(file='Data_analysis/data_prop_long.xlsx')
 ```
 
-**results.txt for 'LD' experiment:**
+**results.txt for 'Exp_1' experiment:**
 ```{r comment=''}
-cat(readLines('LD/results.txt',80), sep='\n')
+cat(readLines('Exp_1/results.txt',80), sep='\n')
 ```
 
-**Time specific effects on the proportion of sprouted spores in each condition - again for 'LD' experiment:**    
+**Time specific effects on the proportion of sprouted spores in each condition - again for 'Exp_1' experiment:**    
 ```{r}
-time_effects = read.xlsx('LD/summary_results.xlsx', sheet='LME-Model_by_time')
+time_effects = read.xlsx('Exp_1/summary_results.xlsx', sheet='LME-Model_by_time')
 options(knitr.kable.NA='')
 knitr::kable(head(time_effects, 20))
 
 ```
 
-**ANOVA summary for effect on all time points - again for 'LD' experiment:**   
+**ANOVA summary for effect on all time points - again for 'Exp_1' experiment:**   
 ```{r}
-overall_effects = read.xlsx('LD/summary_results.xlsx', sheet='ANOVA_summary')
+overall_effects = read.xlsx('Exp_1/summary_results.xlsx', sheet='ANOVA_summary')
 options(knitr.kable.NA='')
 knitr::kable(overall_effects)
 
@@ -162,23 +162,23 @@ example_result = runCountSpores(file)
 All results from *CountSpores* pipeline are now saved in result folders as described above.    
 For further downstream analysis in *R*, data for analysis and results from lme-model and ANOVA (stored all together in results.txt) can be accessed like this:      
   
-Access **data_prop_long** for **GA3** experiment    
+Access **data_prop_long** for **Exp_1** experiment    
 
 ```{r}
-knitr::kable(head(example_result$ReadData_out$GA3$data_prop_long))
+knitr::kable(head(example_result$ReadData_out$Exp_1$data_prop_long))
 
 ```
 
-Access result from **linear mixed effects model** for **GA3** experiment and **'9650_KO'** as reference level   
+Access result from **linear mixed effects model** for **Exp_1** experiment and **'Cond_1'** as reference level   
 
 ```{r}
-example_result$runANOVA_out$GA3$lme$`9650_KO`
+example_result$runANOVA_out$Exp_1$lme$`Cond_1`
 
 ```
 
-Access result from **ANOVA** for **GA3** experiment and **'9650_KO'** as reference level   
+Access result from **ANOVA** for **Exp_1** experiment and **'Cond_1'** as reference level   
 
 ```{r}
-example_result$runANOVA_out$GA3$anova$`9650_KO`
+example_result$runANOVA_out$Exp_1$anova$`Cond_1`
 ```
 
