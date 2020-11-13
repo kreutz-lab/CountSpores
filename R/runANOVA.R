@@ -60,11 +60,19 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
 
       # Apply lme-model and save result
 
-      fit[[c]] <<- lmer(formula, dat1)
-      print(summary(fit[[c]]))
-      # Apply ANOVA and save result
-      anov[[c]] <<- anova(fit[[c]])
-      print(anov[[c]])
+      withCallingHandlers({
+
+
+        fit[[c]] <<- lmer(formula, dat1)
+        print(summary(fit[[c]]))
+        # Apply ANOVA and save result
+        anov[[c]] <<- anova(fit[[c]])
+        print(anov[[c]])
+      },
+      warning=function() {return(NULL)})
+    }
+
+
 
     }
     sink()
