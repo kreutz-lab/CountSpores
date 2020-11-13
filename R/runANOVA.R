@@ -127,7 +127,7 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
 
 
 
-    # Save LME-Model results sorted by timepoints, all reference levels aggregated in one table
+    # Save LME-Model results sorted by timepoints, aggregate all reference levels in one table
     times = c(2:length(unique(dat$Day)))
 
     random_effects <- pickTimePvalues(fit,cname,times)
