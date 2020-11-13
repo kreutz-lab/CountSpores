@@ -59,22 +59,17 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
       formula = paste0("Proportion ~ Day +", paste0(paste0(c2,':Day',sep=""),collapse="+"),"+",paste0(paste0('(1|Plate:',c2,')',sep=""),collapse="+"),sep="")
 
       # Apply lme-model and save result
-
       withCallingHandlers({
-
-
-        fit[[c]] <<- lmer(formula, dat1)
+        fit[[c]]<<- lmer(formula, dat1)
         print(summary(fit[[c]]))
-        # Apply ANOVA and save result
+        #Apply ANOVA and save result
         anov[[c]] <<- anova(fit[[c]])
         print(anov[[c]])
       },
       warning=function() {return(NULL)})
-    }
 
 
-
-    }
+  }
     sink()
     # _____________________________________________________________________
 
