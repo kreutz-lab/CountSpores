@@ -46,7 +46,8 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
     # Loop over all possible reference levels
     for (c in 1:length(clev)){
       # Remove biasing zeros - remove data from day 1 with Prop=0 and not in reference condition
-      dat1 = filter(dat, !(dat$Day==1 & dat[,which(colnames(dat)==cname[c])]==0 & dat$Proportion==0))
+      #dat1 = filter(dat, !(dat$Day==1 & dat[,which(colnames(dat)==cname[c])]==0 & dat$Proportion==0))
+      dat1=dat
 
       # Relevel to given Condition c
       dat1$Condition = relevel(dat1$Condition, ref=paste(clev[c]))
@@ -59,14 +60,14 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
       formula = paste0("Proportion ~ Day +", paste0(paste0(c2,':Day',sep=""),collapse="+"),"+",paste0(paste0('(1|Plate:',c2,')',sep=""),collapse="+"),sep="")
 
       # Apply lme-model and save result
-      withCallingHandlers({
+      #withCallingHandlers({
         fit[[c]]<<- lmer(formula, dat1)
         print(summary(fit[[c]]))
         #Apply ANOVA and save result
         anov[[c]] <<- anova(fit[[c]])
         print(anov[[c]])
-      },
-      warning=function() {return(NULL)})
+      #},
+      #warning=function() {return(NULL)})
 
 
   }
