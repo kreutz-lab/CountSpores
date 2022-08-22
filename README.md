@@ -74,6 +74,10 @@ knitr::kable(head(read.xlsx(file, sheet='Exp_1'),15))
 
 *ReadData* first creates one directory for each experiment (sheet in
 excel file)  
+``` r
+ReadData(file="exampleData/example.xlsx")
+``` 
+
 Then *ReadData* reads in the raw data, converts columns to factors for
 analysis and calculates the corresponding proportions for each segment
 on the plate. Additionally mean, sd and se are calculated for QC plots.

@@ -13,8 +13,7 @@
 
 
 
-
-runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
+runANOVA = function(file='Data_analysis/data_prop_long.xlsx',createDirs=FALSE){
 
   sheets <- openxlsx::getSheetNames(file)
   runANOVA_out = vector(mode='list', length=length(sheets))
@@ -22,8 +21,21 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
 
   for (s in 1:length(sheets)){
 
+    if(!dir.exists(sheets[s]) && !createDirs)
+      stop(paste0("Directory ",sheets[s]," does not exist which can occur if you didn't call ReadData(). Please call ReadData for data processing first or set argument createDirs=TRUE"))
+
+    if(!dir.exists(sheets[s]) && createDirs)
+      dir.create(sheets[s])
+
+
     # Read in data for main analysis - convert to correct format
     dat = read.xlsx(paste(file), sheet= paste(sheets)[s])
+
+    if(!"Condition" %in% colnames(dat))
+      stop(paste0("Column 'Condition' does not exist in the data. Please reformat input data accordingly."))
+    if(!"Day" %in% colnames(dat))
+      stop(paste0("Column 'Day' does not exist in the data. Please reformat input data accordingly."))
+
     dat[,-which(colnames(dat)%in% c('Proportion'))] = lapply(dat[,-which(colnames(dat)%in% c('Proportion'))], factor)
 
     # Get reference levels & corresponding names of design matrix
@@ -91,7 +103,6 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
     addWorksheet(wb, 'ANOVA_summary')
 
 
-
     # Save LME-Model results
     res_lme_list = list()
 
@@ -110,8 +121,6 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
     writeData(wb, 'LME-Model',res_lme, rowNames=TRUE)
 
 
-
-
     # Save ANOVA results
     res_anova_list = list()
 
@@ -127,8 +136,6 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
                                 pvalue = Pr..F.)
     res_anova %>% dplyr::relocate(refLevel)
     writeData(wb, 'ANOVA',res_anova, rowNames=TRUE)
-
-
 
 
     # Save LME-Model results sorted by timepoints, aggregate all reference levels in one table
@@ -155,8 +162,6 @@ runANOVA = function(file='Data_analysis/data_prop_long.xlsx'){
       writeData(wb, 'LME-Model_by_time',pdat ,rowNames=TRUE, startCol = 1, startRow = curr_row+3)
       curr_row = curr_row + 6 + nrow(pdat)
     }
-
-
 
 
     # Save ANOVA results, all reference levels aggregated in one table
