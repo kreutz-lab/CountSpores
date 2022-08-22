@@ -62,6 +62,9 @@ knitr::kable(head(read.xlsx(file, sheet='Exp_1'),15))
 
 
 ## ReadData
+``` r
+ReadData(file="exampleData/example.xlsx")
+``` 
 
 *ReadData* first creates one directory for each experiment (sheet in excel file)    
 Then *ReadData* reads in the raw data, converts columns to factors for analysis and calculates the corresponding proportions for each segment on the plate. Additionally mean, sd and se are calculated for QC plots. This new data file is saved as **'data_proportional.xlsx'** in the **'Data_analysis'** directory, created by *ReadData*.    
@@ -122,7 +125,7 @@ knitr::include_graphics('Exp_1/Exp_1_mean_se.png')
 Applies lme-models and runs ANOVA for each experiment separately and returns results.    
 **results.txt**: Complete collection lme-model & ANOVA results   
 **summary_results.xlsx**: Summarized results for lme-model and ANOVA   
-```{r}
+```{r, message = FALSE}
 runANOVA_out = runANOVA(file='Data_analysis/data_prop_long.xlsx')
 ```
 
